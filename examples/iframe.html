@@ -28,23 +28,17 @@
 			setTimeout(() => { alert(event.data); }, 1000);
 		}
 
-		function makeAvatar() {
-			let iframe = document.getElementById('iframe')
+		function sendMessage() {
 
-			if (iframe) {
-				iframe.id = "iframe"
-				iframe.src = 'https://vr.readyplayer.me/';
-				iframe.className = 'content';
-				iframe.allow = "camera *; microphone *";
-			}
-			else {
-				iframe = document.createElement('iframe');
-				iframe.id = "iframe"
-				iframe.src = 'https://vr.readyplayer.me/';
-				iframe.className = 'content';
-				iframe.allow = "camera *; microphone *";
-				document.querySelector('.container').appendChild(iframe);
-			}
+		}
+
+		function makeAvatar() {
+			let iframe = document.getElementById('iframe') || document.createElement('iframe')
+			iframe.id = "iframe"
+			iframe.src = 'https://vr.readyplayer.me/'
+			iframe.className = 'content'
+			iframe.allow = "camera *; microphone *"
+			document.querySelector('.container').appendChild(iframe)
 		}
 	</script>
 </head>
