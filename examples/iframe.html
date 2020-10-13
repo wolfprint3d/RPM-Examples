@@ -14,6 +14,16 @@
 			height: 600;
 			border: none;
 		}
+		
+		.inputs{
+			width: 400px;
+			margin: 20px auto;
+			display: flex;
+		}
+		
+		input{
+			flex-grow: 1;
+		}
 
 		body {
 			background-color: gray;
@@ -29,13 +39,17 @@
 		}
 
 		function sendMessage() {
-
+			if (iframe) {
+				const message = document.getElementById("message").value;
+				iframe.contentWindow.postMessage({sender: "TEST", message}, '*');
+			}
 		}
 
+		let iframe
 		function makeAvatar() {
-			let iframe = document.getElementById('iframe') || document.createElement('iframe')
+			iframe = document.getElementById('iframe') || document.createElement('iframe')
 			iframe.id = "iframe"
-			iframe.src = 'https://vr.readyplayer.me/'
+			iframe.src = 'http://localhost:3000'
 			iframe.className = 'content'
 			iframe.allow = "camera *; microphone *"
 			document.querySelector('.container').appendChild(iframe)
@@ -44,7 +58,11 @@
 </head>
 
 <body>
-	<input type="button" value="Start" onClick="makeAvatar()" />
+	<div class="inputs">
+		<input type="button" value="Start" onClick="makeAvatar()" />
+		<input type="button" value="Send Message" onClick="sendMessage()" />
+		<input id="message" type="text" placeholder="Enter the message to send..." />
+	</div>
 	<div class="container"></div>
 </body>
 
