@@ -1,2 +1,3 @@
 # RPM-Examples
-Integration examples for readyplayer.me.
+
+All Ready Player Me examples are moved to https://github.com/readyplayerme
